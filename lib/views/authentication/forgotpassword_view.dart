@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:user_auth_app/core/constants/textfieldtype_keys.dart';
 import 'package:user_auth_app/utils/text.dart';
-import 'package:user_auth_app/views/otp/otp_view.dart';
+import 'package:user_auth_app/views/authentication/otp_view.dart';
 import 'package:user_auth_app/widgets/app_buttom.dart';
 import 'package:user_auth_app/widgets/app_textfield.dart';
 
@@ -11,6 +11,8 @@ class ForgotPasswordView extends StatefulWidget {
   @override
   State<ForgotPasswordView> createState() => _ForgotPasswordView();
 }
+
+TextEditingController emailController = TextEditingController();
 
 class _ForgotPasswordView extends State<ForgotPasswordView> {
   @override
@@ -37,6 +39,7 @@ class _ForgotPasswordView extends State<ForgotPasswordView> {
                 height: 20,
               ),
               AppTextField(
+                controller: emailController,
                 type: InputType.email,
               ),
               const SizedBox(
@@ -47,9 +50,14 @@ class _ForgotPasswordView extends State<ForgotPasswordView> {
               ),
               Spacer(),
               InkWell(
-                onTap: () => Navigator.pushReplacement(context,
-                    MaterialPageRoute(builder: (context) => const OtpView())),
-                child: const AppButtom(
+                onTap: () => Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => OtpView(
+                              email: "",
+                            ))),
+                child: AppButtom(
+                  onPressed: () {},
                   text: "CONTINUE",
                   icon: Icons.arrow_right_alt,
                 ),

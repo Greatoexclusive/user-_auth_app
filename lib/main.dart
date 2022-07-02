@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:user_auth_app/views/forgot_password/forgotpassword_view.dart';
-import 'package:user_auth_app/views/otp/otp_view.dart';
-import 'package:user_auth_app/views/signup/signup_view.dart';
+import 'package:user_auth_app/views/authentication/signup_view.dart';
+import 'package:user_auth_app/views/onboarding/onboarding_view.dart';
 
 void main() {
   runApp(const MyApp());
@@ -27,7 +26,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: const SignUpView(),
+      home: const OnBoardingView(),
     );
   }
 }

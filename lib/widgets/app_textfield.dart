@@ -5,8 +5,11 @@ import 'package:user_auth_app/utils/color.dart';
 import 'package:user_auth_app/utils/text.dart';
 
 class AppTextField extends StatelessWidget {
-  AppTextField({Key? key, required this.type}) : super(key: key);
+  AppTextField({Key? key, required this.type, required this.controller})
+      : super(key: key);
   String type;
+  TextEditingController controller;
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -49,6 +52,7 @@ class AppTextField extends StatelessWidget {
               ),
               Expanded(
                   child: TextFormField(
+                controller: controller,
                 style: input,
                 maxLines: 1,
                 cursorColor: Colors.black,

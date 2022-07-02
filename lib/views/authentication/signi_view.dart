@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:user_auth_app/core/constants/textfieldtype_keys.dart';
 import 'package:user_auth_app/utils/text.dart';
-import 'package:user_auth_app/views/forgot_password/forgotpassword_view.dart';
-import 'package:user_auth_app/views/signup/signup_view.dart';
+import 'package:user_auth_app/views/authentication/forgotpassword_view.dart';
 import 'package:user_auth_app/widgets/app_buttom.dart';
 import 'package:user_auth_app/widgets/app_textfield.dart';
 import 'package:user_auth_app/widgets/fb_button.dart';
@@ -13,6 +12,9 @@ class SignInView extends StatefulWidget {
   @override
   State<SignInView> createState() => _SignInViewState();
 }
+
+TextEditingController usernameController = TextEditingController();
+TextEditingController passwordController = TextEditingController();
 
 class _SignInViewState extends State<SignInView> {
   @override
@@ -34,13 +36,15 @@ class _SignInViewState extends State<SignInView> {
                   AppText.caption(
                     "Welcome back, you have been missed",
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   AppTextField(
+                    controller: usernameController,
                     type: InputType.username,
                   ),
                   AppTextField(
+                    controller: passwordController,
                     type: InputType.password,
                   ),
                   const SizedBox(
@@ -49,11 +53,15 @@ class _SignInViewState extends State<SignInView> {
                   const SizedBox(
                     height: 50,
                   ),
-                  const AppButtom(
+                  AppButtom(
+                    onPressed: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const SignInView())),
                     text: "SIGN IN",
                     icon: Icons.login_outlined,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
                   Row(

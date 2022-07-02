@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:user_auth_app/core/constants/textfieldtype_keys.dart';
 import 'package:user_auth_app/utils/color.dart';
 import 'package:user_auth_app/utils/text.dart';
-import 'package:user_auth_app/views/signin/signi_view.dart';
+import 'package:user_auth_app/views/authentication/signi_view.dart';
 import 'package:user_auth_app/widgets/app_buttom.dart';
 import 'package:user_auth_app/widgets/app_textfield.dart';
 import 'package:user_auth_app/widgets/fb_button.dart';
@@ -13,6 +13,10 @@ class SignUpView extends StatefulWidget {
   @override
   State<SignUpView> createState() => _SignUpViewState();
 }
+
+TextEditingController emailController = TextEditingController();
+TextEditingController usernameController = TextEditingController();
+TextEditingController passwordController = TextEditingController();
 
 class _SignUpViewState extends State<SignUpView> {
   @override
@@ -34,13 +38,16 @@ class _SignUpViewState extends State<SignUpView> {
                   AppText.caption(
                     "Create an account to continue!",
                   ),
-                  AppTextField(
-                    type: InputType.email,
+                  Text(
+                    "",
+                    style: TextStyle(),
                   ),
                   AppTextField(
+                    controller: usernameController,
                     type: InputType.username,
                   ),
                   AppTextField(
+                    controller: passwordController,
                     type: InputType.password,
                   ),
                   const SizedBox(
@@ -68,7 +75,11 @@ class _SignUpViewState extends State<SignUpView> {
                   const SizedBox(
                     height: 40,
                   ),
-                  const AppButtom(
+                  AppButtom(
+                    onPressed: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const SignUpView())),
                     text: "SIGN UP",
                     icon: Icons.login_outlined,
                   ),
