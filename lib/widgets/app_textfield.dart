@@ -29,24 +29,28 @@ class AppTextField extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          AppText.caption(type == InputType.email
-              ? "Email"
-              : type == InputType.password
-                  ? "Password"
-                  : type == InputType.username
-                      ? "Username"
-                      : type == InputType.phone
-                          ? "PhoneNUmber"
-                          : ""),
+          AppText.caption(
+            type == InputType.email
+                ? "Email"
+                : type == InputType.password
+                    ? "Password"
+                    : type == InputType.firstname
+                        ? "First Name"
+                        : type == InputType.phone
+                            ? "Phone Number"
+                            : type == InputType.lastname
+                                ? "Last Name"
+                                : "",
+          ),
           Row(
             children: [
               Icon(type == InputType.email
                   ? Icons.mail_outline
                   : type == InputType.password
                       ? Icons.lock_outline
-                      : type == InputType.username
-                          ? Icons.person_outline
-                          : Icons.circle),
+                      : type == InputType.phone
+                          ? Icons.phone
+                          : Icons.person_outlined),
               const SizedBox(
                 width: 10,
               ),

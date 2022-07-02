@@ -15,7 +15,7 @@ class OtpView extends StatefulWidget {
 }
 
 AuthServices _authServices = AuthServices();
-TextEditingController otpController = TextEditingController();
+TextEditingController _otpController = TextEditingController();
 bool isLoading = false;
 bool result = false;
 
@@ -26,7 +26,7 @@ class _OtpView extends State<OtpView> {
     print("about to verify");
     result = await _authServices.verifyOtp(
       email: widget.email,
-      pin: otpController.text,
+      pin: _otpController.text,
     );
     print("out already");
     isLoading = false;
@@ -64,7 +64,7 @@ class _OtpView extends State<OtpView> {
                   Form(
                     // key: model.formkey,
                     child: PinCodeTextField(
-                      controller: otpController,
+                      controller: _otpController,
                       appContext: context,
                       length: 6,
                       onChanged: (value) {},
@@ -98,10 +98,22 @@ class _OtpView extends State<OtpView> {
                     onPressed: () async {
                       await verifyOtp();
                       if (result) {
+                        final snack = SnackBar(
+                          backgroundColor: Colors.green,
+                          elevation: 5,
+                          duration: const Duration(seconds: 4),
+                          content: AppText.caption(
+                            "Verification Successful!",
+                            color: Colors.white,
+                          ),
+                        );
+                        ScaffoldMessenger.of(context).showSnackBar(snack);
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => const SignUpView(),
+                            builder: (context) => SignUpView(
+                              email: widget.email,
+                            ),
                           ),
                         );
                       } else {

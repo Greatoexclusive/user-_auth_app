@@ -21,14 +21,14 @@ class VerifyEmailView extends StatefulWidget {
 AuthServices _authServices = AuthServices();
 bool isLoading = false;
 bool result = false;
-TextEditingController emailController = TextEditingController();
+TextEditingController _emailController = TextEditingController();
 
 class _VerifyEmailViewState extends State<VerifyEmailView> {
   verifyEmail() async {
     isLoading = true;
     setState(() {});
     print("about to verify");
-    result = await _authServices.verifyEmail(email: emailController.text);
+    result = await _authServices.verifyEmail(email: _emailController.text);
     print("out already");
     isLoading = false;
     setState(() {});
@@ -61,7 +61,7 @@ class _VerifyEmailViewState extends State<VerifyEmailView> {
                       height: 20,
                     ),
                     AppTextField(
-                      controller: emailController,
+                      controller: _emailController,
                       type: InputType.email,
                     ),
                     const SizedBox(
@@ -80,7 +80,7 @@ class _VerifyEmailViewState extends State<VerifyEmailView> {
                             context,
                             MaterialPageRoute(
                               builder: (context) => OtpView(
-                                email: emailController.text,
+                                email: _emailController.text,
                               ),
                             ),
                           );

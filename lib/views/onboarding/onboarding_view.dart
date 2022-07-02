@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:user_auth_app/utils/text.dart';
 import 'package:user_auth_app/views/authentication/forgotpassword_view.dart';
-import 'package:user_auth_app/views/authentication/signi_view.dart';
+import 'package:user_auth_app/views/authentication/sigin_view.dart';
 import 'package:user_auth_app/views/authentication/verifyemail_view.dart';
 import 'package:user_auth_app/widgets/app_buttom.dart';
 import 'package:user_auth_app/widgets/fb_button.dart';

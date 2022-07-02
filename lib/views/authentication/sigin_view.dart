@@ -13,7 +13,7 @@ class SignInView extends StatefulWidget {
   State<SignInView> createState() => _SignInViewState();
 }
 
-TextEditingController usernameController = TextEditingController();
+TextEditingController emailController = TextEditingController();
 TextEditingController passwordController = TextEditingController();
 
 class _SignInViewState extends State<SignInView> {
@@ -40,8 +40,8 @@ class _SignInViewState extends State<SignInView> {
                     height: 20,
                   ),
                   AppTextField(
-                    controller: usernameController,
-                    type: InputType.username,
+                    controller: emailController,
+                    type: InputType.email,
                   ),
                   AppTextField(
                     controller: passwordController,
